@@ -10,6 +10,8 @@ const app = express()
 const server = http.createServer(app)
 const io = socketio(server)
 
+const {addUser, removeUser, getUser, getUserInRoom} = require('./users')
+
 io.on('connection', socket => {
     socket.on('join', ({name, room}, callback) => {
         console.log('connected')
