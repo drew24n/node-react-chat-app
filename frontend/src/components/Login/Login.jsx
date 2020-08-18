@@ -1,6 +1,6 @@
 import React from "react";
-import style from "./login.module.scss";
-import {setNameAction, setRoomAction} from "../../redux/login-reducer";
+import style from "./Login.module.scss";
+import {setNameAction, setRoomAction} from "../../redux/loginReducer";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 

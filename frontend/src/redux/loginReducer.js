@@ -19,12 +19,3 @@ export const loginReducer = (state = initialState, action) => {
 
 export const setNameAction = (name) => ({type: SET_NAME, name})
 export const setRoomAction = (room) => ({type: SET_ROOM, room})
-
-// export const login = (name, room) => (dispatch) => {
-//     try {
-//         dispatch(setNameAction(name))
-//         dispatch(setRoomAction(room))
-//     } catch (e) {
-//         alert(e)
-//     }
-// }

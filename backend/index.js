@@ -10,8 +10,10 @@ const app = express()
 const server = http.createServer(app)
 const io = socketio(server)
 
-io.on('connection', (socket) => {
-    console.log('new connection')
+io.on('connection', socket => {
+    socket.on('join', ({name, room}, callback) => {
+        console.log('connected')
+    })
     socket.on('disconnect', () => {
         console.log('disconnected')
     })
@@ -19,4 +21,4 @@ io.on('connection', (socket) => {
 
 app.use(router)
 
-server.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
+server.listen(PORT, () => console.log(`server is running on port ${PORT}`))
