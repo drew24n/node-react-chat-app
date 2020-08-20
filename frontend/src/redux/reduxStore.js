@@ -3,10 +3,12 @@ import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {appReducer} from "./appReducer";
 import {loginReducer} from "./loginReducer";
+import {chatReducer} from "./chatReducer";
 
 const rootReducer = combineReducers({
     app: appReducer,
-    login: loginReducer
+    login: loginReducer,
+    chat: chatReducer
 })
 
 export const store = createStore(rootReducer, compose(
