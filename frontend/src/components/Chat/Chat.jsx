@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 let socket = io('localhost:5000')
 
-const Chat = ({location}) => {
+export const Chat = ({location}) => {
     const dispatch = useDispatch()
     const chatState = useSelector(state => state.chat)
 
@@ -15,9 +15,6 @@ const Chat = ({location}) => {
         const {name, room} = queryString.parse(location.search)
         socket.emit('join', {name, room}, () => {
         })
-
-        console.log(socket)
-
         return () => {
             socket.emit('disconnect')
             socket.off()
@@ -25,10 +22,8 @@ const Chat = ({location}) => {
     }, [location.search])
 
     useEffect(() => {
-        socket.on('message', message => {
-            dispatch(setMessages(message))
-        }, [chatState.messages])
-    })
+        socket.on('message', message => dispatch(setMessages(message)))
+    }, [dispatch])
 
     const sendMessage = (e) => {
         e.preventDefault()
@@ -38,12 +33,8 @@ const Chat = ({location}) => {
     return (
         <div className={style.container}>
             <h1>Chat</h1>
-            <input type="text" value={chatState.message}
-                   onChange={e => dispatch(setMessage(e.target.value))}
-                   onKeyPress={e => e.key === 'Enter' && sendMessage(e)}
-            />
+            <input type="text" value={chatState.message} onChange={e => dispatch(setMessage(e.target.value))}
+                   onKeyPress={e => e.key === 'Enter' && sendMessage(e)}/>
         </div>
     )
 }
-
-export default Chat

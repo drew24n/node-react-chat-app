@@ -4,7 +4,7 @@ import {setNameAction, setRoomAction} from "../../redux/loginReducer";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
-const Login = () => {
+export const Login = () => {
     const name = useSelector(state => state.login.name)
     const room = useSelector(state => state.login.room)
     const dispatch = useDispatch()
@@ -22,5 +22,3 @@ const Login = () => {
         </div>
     )
 }
-
-export default Login

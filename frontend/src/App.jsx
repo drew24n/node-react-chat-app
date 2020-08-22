@@ -1,13 +1,13 @@
 import React from "react";
 import style from "./App.module.scss";
-import Chat from "./components/Chat/Chat";
-import Login from "./components/Login/Login";
+import {Chat} from "./components/Chat/Chat";
+import {Login} from "./components/Login/Login";
 import {BrowserRouter} from "react-router-dom";
 import {Route} from "react-router";
 import {Provider} from "react-redux";
 import {store} from "./redux/reduxStore";
 
-const App = () => {
+export const App = () => {
     return (
         <main className={style.container}>
             <Provider store={store}>
@@ -19,5 +19,3 @@ const App = () => {
         </main>
     )
 }
-
-export default App
