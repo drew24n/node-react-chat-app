@@ -1,2 +1,18 @@
 .container {
+  width: 50%;
+  height: 80vh;
+  border: 1px solid #0b98ef;
+  box-sizing: border-box;
+
+  h2 {
+    display: block;
+    font-size: 26px;
+    color: #fff;
+    margin: 10px;
+    text-align: center;
+  }
+
+  @media (max-width: 1000px) {
+    width: 75%;
+  }
 }

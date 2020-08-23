@@ -1,9 +1,11 @@
 import React, {useEffect} from "react";
-import style from "./Chat.module.scss";
 import * as queryString from "query-string";
 import io from "socket.io-client";
 import {setMessage, setMessages} from "../../redux/chatReducer";
 import {useDispatch, useSelector} from "react-redux";
+import style from "./Chat.module.scss";
+import {Input} from "./Input/Input";
+import {Messages} from "./Messages/Messages";
 
 let socket = io('localhost:5000')
 
@@ -25,16 +27,11 @@ export const Chat = ({location}) => {
         socket.on('message', message => dispatch(setMessages(message)))
     }, [dispatch])
 
-    const sendMessage = (e) => {
-        e.preventDefault()
-        if (chatState.message) socket.emit('sendMessage', chatState.message, () => dispatch(setMessage('')))
-    }
-
     return (
         <div className={style.container}>
-            <h1>Chat</h1>
-            <input type="text" value={chatState.message} onChange={e => dispatch(setMessage(e.target.value))}
-                   onKeyPress={e => e.key === 'Enter' && sendMessage(e)}/>
+            <h2>roomName</h2>
+            <Messages/>
+            <Input message={chatState.message} socket={socket} setMessage={setMessage} dispatch={dispatch}/>
         </div>
     )
 }

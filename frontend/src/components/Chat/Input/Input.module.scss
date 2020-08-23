@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+
+  textarea {
+    height: 50px;
+    width: 75%;
+    box-sizing: border-box;
+    outline: none;
+    resize: none;
+  }
+
+  button {
+    height: 50px;
+    width: 25%;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+}

@@ -1,4 +1,9 @@
 .container {
   min-height: 100vh;
   min-width: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  font-family: Arial, sans-serif !important;
 }

@@ -1,2 +1,43 @@
 .container {
+  width: 315px;
+
+  h1 {
+    color: #fff;
+    margin-bottom: 35px;
+    text-align: center;
+    font-size: 26px;
+    cursor: default;
+  }
+
+  div {
+    border: 1px solid #0b98ef;
+    padding: 20px;
+    height: 150px;
+
+    a {
+      text-decoration: none;
+      display: block;
+      margin: 31px auto 31px auto;
+      cursor: pointer;
+      height: 30px;
+      width: 80px;
+
+      button {
+        display: block;
+        margin: 31px auto 31px auto;
+        cursor: pointer;
+        height: 30px;
+        width: 80px;
+      }
+    }
+
+    input {
+      margin: 10px auto 10px auto;
+      box-sizing: border-box;
+      outline: none;
+      display: block;
+      width: 170px;
+      height: 30px;
+    }
+  }
 }

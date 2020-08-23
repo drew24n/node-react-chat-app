@@ -11,9 +11,10 @@ export const Login = () => {
 
     return (
         <div className={style.container}>
-            <h1>Login</h1>
+            <h1>Welcome to Chat!</h1>
             <div>
-                <input placeholder="name" type="text" onChange={event => dispatch(setNameAction(event.target.value))}/>
+                <input placeholder="name" type="text" autoFocus={true}
+                       onChange={event => dispatch(setNameAction(event.target.value))}/>
                 <input placeholder="room" type="text" onChange={event => dispatch(setRoomAction(event.target.value))}/>
                 <Link onClick={e => (!name || !room) && e.preventDefault()} to={`/chat?name=${name}&room=${room}`}>
                     <button>Enter</button>
