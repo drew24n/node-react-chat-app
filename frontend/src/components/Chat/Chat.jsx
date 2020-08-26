@@ -1,17 +1,19 @@
 import React, {useEffect} from "react";
 import * as queryString from "query-string";
 import io from "socket.io-client";
-import {setMessage, setMessages} from "../../redux/chatReducer";
+import {setMessageAction, setMessagesAction} from "../../redux/chatReducer";
 import {useDispatch, useSelector} from "react-redux";
 import style from "./Chat.module.scss";
 import {Input} from "./Input/Input";
 import {Messages} from "./Messages/Messages";
+import {Header} from "./Header/Header";
 
-let socket = io('localhost:5000')
+export const socket = io('localhost:5000')
 
 export const Chat = ({location}) => {
     const dispatch = useDispatch()
     const chatState = useSelector(state => state.chat)
+    const loginState = useSelector(state => state.login)
 
     useEffect(() => {
         const {name, room} = queryString.parse(location.search)
@@ -24,14 +26,14 @@ export const Chat = ({location}) => {
     }, [location.search])
 
     useEffect(() => {
-        socket.on('message', message => dispatch(setMessages(message)))
+        socket.on('message', message => dispatch(setMessagesAction(message)))
     }, [dispatch])
 
     return (
         <div className={style.container}>
-            <h2>roomName</h2>
-            <Messages/>
-            <Input message={chatState.message} socket={socket} setMessage={setMessage} dispatch={dispatch}/>
+            <Header room={loginState.room} dispatch={dispatch}/>
+            <Messages messages={chatState.messages}/>
+            <Input message={chatState.message} socket={socket} setMessage={setMessageAction()} dispatch={dispatch}/>
         </div>
     )
 }

@@ -16,8 +16,12 @@ export const Login = () => {
                 <input placeholder="name" type="text" autoFocus={true}
                        onChange={event => dispatch(setNameAction(event.target.value))}/>
                 <input placeholder="room" type="text" onChange={event => dispatch(setRoomAction(event.target.value))}/>
-                <Link onClick={e => (!name || !room) && e.preventDefault()} to={`/chat?name=${name}&room=${room}`}>
-                    <button>Enter</button>
+                <Link onClick={e => (!name || !room || name.length > 10 || room.length > 10) && e.preventDefault()}
+                      to={`/chat?name=${name}&room=${room}`}>
+                    <button onClick={() => {
+                        if (name.length > 10 || room.length > 10) alert('user name or room name can`t exceed 10 symbols')
+                    }}>Enter
+                    </button>
                 </Link>
             </div>
         </div>

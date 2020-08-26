@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+
+  h2 {
+    width: 75%;
+    height: 60px;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: #fff;
+    padding: 10px;
+    cursor: default;
+    background-color: #6495ed;
+  }
+
+  a {
+    button {
+      width: 25%;
+      border: none;
+      outline: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+
+}

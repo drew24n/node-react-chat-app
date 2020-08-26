@@ -6,6 +6,7 @@ const addUser = ({id, name, room}) => {
 
     const existingUser = users.find(user => user.room === room && user.name === name)
     if (existingUser) return {error: 'username is already taken'}
+    if (name.length || room.length > 10) return {error: `user name or room name length shouldn't exceed 10 symbols`}
 
     const user = {id, name, room}
     users.push(user)

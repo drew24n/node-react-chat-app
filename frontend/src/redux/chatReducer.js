@@ -17,5 +17,5 @@ export const chatReducer = (state = initialState, action) => {
     }
 }
 
-export const setMessage = (message) => ({type: SET_MESSAGE, message})
-export const setMessages = (message) => ({type: SET_MESSAGES, message})
+export const setMessageAction = (message) => ({type: SET_MESSAGE, message})
+export const setMessagesAction = (message) => ({type: SET_MESSAGES, message})

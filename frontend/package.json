@@ -1,6 +1,6 @@
 {
   "name": "chat",
-  "version": "1.0.2",
+  "version": "1.0.8",
   "private": true,
   "homepage": "https://drew24n.github.io/react-node-chat-app/",
   "dependencies": {

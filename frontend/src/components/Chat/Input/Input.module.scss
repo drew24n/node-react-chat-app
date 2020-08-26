@@ -7,12 +7,22 @@
     box-sizing: border-box;
     outline: none;
     resize: none;
+    border: none;
+    font-size: 16px;
   }
 
   button {
+    background-color: #6495ed;
     height: 50px;
     width: 25%;
     box-sizing: border-box;
     cursor: pointer;
+    border: none;
+    font-size: 20px;
+    color: #fff;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: #2a70f1;
+    }
   }
 }
