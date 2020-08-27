@@ -1,5 +1,4 @@
-import {applyMiddleware, combineReducers, compose, createStore} from "redux";
-import thunk from "redux-thunk";
+import {combineReducers, compose, createStore} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {loginReducer} from "./loginReducer";
 import {chatReducer} from "./chatReducer";
@@ -9,7 +8,4 @@ const rootReducer = combineReducers({
     chat: chatReducer
 })
 
-export const store = createStore(rootReducer, compose(
-    applyMiddleware(thunk),
-    composeWithDevTools() ? composeWithDevTools() : f => f
-))
+export const store = createStore(rootReducer, compose(composeWithDevTools() ? composeWithDevTools() : f => f))

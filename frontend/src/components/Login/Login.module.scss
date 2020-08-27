@@ -1,8 +1,9 @@
 .container {
   width: 315px;
+  user-select: none;
 
   h1 {
-    color: #fff;
+    color: #e6e6fa;
     margin-bottom: 35px;
     text-align: center;
     font-size: 26px;
@@ -28,6 +29,14 @@
         cursor: pointer;
         height: 30px;
         width: 80px;
+        background-color: #e6e6fa;
+        outline: none;
+        border: none;
+        font-size: 16px;
+
+        &:hover {
+          border: 2px solid #0b98ef;
+        }
       }
     }
 
@@ -38,6 +47,13 @@
       display: block;
       width: 170px;
       height: 30px;
+      background-color: #e6e6fa;
+      border: none;
+      font-size: 16px;
+
+      &:focus {
+        outline: 2px solid #0b98ef;
+      }
     }
   }
 }

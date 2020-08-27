@@ -11,7 +11,7 @@ export const Input = ({message, setMessage, dispatch, socket}) => {
     return (
         <div className={style.container}>
             <textarea value={message} onChange={e => dispatch(setMessage(e.target.value))}
-                   onKeyPress={e => e.key === 'Enter' && sendMessage(e)} autoFocus={true}/>
+                      onKeyPress={e => e.key === 'Enter' && sendMessage(e)} autoFocus={true}/>
             <button>Send</button>
         </div>
     )

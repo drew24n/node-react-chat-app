@@ -1,19 +1,15 @@
 import React from "react";
 import style from "./Header.module.scss";
 import {Link} from "react-router-dom";
-import {setNameAction, setRoomAction} from "../../../redux/loginReducer";
-import {socket} from "../Chat";
+import {useSelector} from "react-redux";
 
-export const Header = ({room, dispatch}) => {
+export const Header = () => {
+    const loginState = useSelector(state => state.login)
+
     return (
         <div className={style.container}>
-            <h2>Room: <br/>{room}</h2>
-            <Link to={`/`} onClick={() => {
-                dispatch(setNameAction(''))
-                dispatch(setRoomAction(''))
-                socket.emit('disconnect')
-                socket.off()
-            }}>
+            <h2>Room: {loginState.room}</h2>
+            <Link to={`/`}>
                 <button>Quit</button>
             </Link>
         </div>

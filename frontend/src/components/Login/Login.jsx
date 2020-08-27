@@ -13,15 +13,13 @@ export const Login = () => {
         <div className={style.container}>
             <h1>Welcome to Chat!</h1>
             <div>
-                <input placeholder="name" type="text" autoFocus={true}
+                <input placeholder="user name" type="text" autoFocus={true} maxLength={10}
                        onChange={event => dispatch(setNameAction(event.target.value))}/>
-                <input placeholder="room" type="text" onChange={event => dispatch(setRoomAction(event.target.value))}/>
+                <input placeholder="room name" type="text" maxLength={10}
+                       onChange={event => dispatch(setRoomAction(event.target.value))}/>
                 <Link onClick={e => (!name || !room || name.length > 10 || room.length > 10) && e.preventDefault()}
                       to={`/chat?name=${name}&room=${room}`}>
-                    <button onClick={() => {
-                        if (name.length > 10 || room.length > 10) alert('user name or room name can`t exceed 10 symbols')
-                    }}>Enter
-                    </button>
+                    <button>Enter</button>
                 </Link>
             </div>
         </div>

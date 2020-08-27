@@ -1,11 +1,11 @@
 import React from "react";
 import style from "./App.module.scss";
-import {Chat} from "./components/Chat/Chat";
-import {Login} from "./components/Login/Login";
+import {Chat} from "../Chat/Chat";
+import {Login} from "../Login/Login";
 import {BrowserRouter} from "react-router-dom";
 import {Route} from "react-router";
 import {Provider} from "react-redux";
-import {store} from "./redux/reduxStore";
+import {store} from "../../redux/reduxStore";
 
 export const App = () => {
     return (

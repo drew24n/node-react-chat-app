@@ -9,6 +9,7 @@
     resize: none;
     border: none;
     font-size: 16px;
+    background-color: #e6e6fa;
   }
 
   button {
@@ -19,9 +20,11 @@
     cursor: pointer;
     border: none;
     font-size: 20px;
-    color: #fff;
+    color: #e6e6fa;
     transition: all 0.3s ease;
-    &:hover {
+    outline: none;
+
+    &:active {
       background-color: #2a70f1;
     }
   }
