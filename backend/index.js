@@ -24,10 +24,10 @@ io.on('connection', socket => {
 
         socket.join(user.room)
 
-        socket.emit('message', {user: 'system', message: `${user.name} welcome to ${user.room}`})
+        socket.emit('message', {user: 'system message', message: `${user.name}, welcome to room ${user.room}`})
         socket.broadcast.to(user.room).emit('message', {
-            user: 'system',
-            message: `${user.name} has joined ${user.room}`
+            user: 'system message',
+            message: `user ${user.name} has joined the room`
         })
 
         io.to(user.room).emit('roomInfo', {room: user.room, users: getUsersInRoom(user.room)})
@@ -46,7 +46,7 @@ io.on('connection', socket => {
     socket.on('disconnect', () => {
         const user = removeUser(socket.id)
         if (user) {
-            io.to(user.room).emit('message', {user: 'system', message: `${user.name} has left the room`})
+            io.to(user.room).emit('message', {user: 'system message', message: `user ${user.name} has left the room`})
             io.to(user.room).emit('roomInfo', {room: user.room, users: getUsersInRoom(user.room)})
         }
     })

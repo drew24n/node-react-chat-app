@@ -14,6 +14,7 @@ export const socket = io('localhost:5000')
 export const Chat = ({location}) => {
     const dispatch = useDispatch()
     const chatState = useSelector(state => state.chat)
+    const loginState = useSelector(state => state.login)
 
     useEffect(() => {
         const {name, room} = queryString.parse(location.search)
@@ -34,7 +35,7 @@ export const Chat = ({location}) => {
     return (
         <div className={style.container}>
             <Header/>
-            <Messages messages={chatState.messages}/>
+            <Messages messages={chatState.messages} name={loginState.name}/>
             <Input message={chatState.message} socket={socket} setMessage={setMessageAction} dispatch={dispatch}/>
         </div>
     )

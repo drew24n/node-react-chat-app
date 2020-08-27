@@ -8,3 +8,11 @@
   background-color: #000;
   font-family: Arial, sans-serif;
 }
+
+* {
+  -ms-overflow-style: none;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
