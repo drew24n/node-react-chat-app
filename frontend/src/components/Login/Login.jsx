@@ -12,7 +12,7 @@ export const Login = () => {
     return (
         <div className={style.container}>
             <h1>Welcome to Chat!</h1>
-            <div>
+            <form>
                 <input placeholder="user name" type="text" autoFocus={true} maxLength={10}
                        onChange={event => dispatch(setNameAction(event.target.value))}/>
                 <input placeholder="room name" type="text" maxLength={10}
@@ -21,7 +21,7 @@ export const Login = () => {
                       to={`/chat?name=${name}&room=${room}`}>
                     <button>Enter</button>
                 </Link>
-            </div>
+            </form>
         </div>
     )
 }

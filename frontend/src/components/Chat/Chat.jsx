@@ -8,6 +8,7 @@ import {Input} from "./Input/Input";
 import {Messages} from "./Messages/Messages";
 import {Header} from "./Header/Header";
 import {setNameAction, setRoomAction} from "../../redux/loginReducer";
+import {Redirect} from "react-router-dom";
 
 export const socket = io('localhost:5000')
 
@@ -31,6 +32,8 @@ export const Chat = ({location}) => {
     useEffect(() => {
         socket.on('message', message => dispatch(setMessagesAction(message)))
     }, [dispatch])
+
+    if (!loginState.name) return <Redirect to={"/"}/>
 
     return (
         <div className={style.container}>

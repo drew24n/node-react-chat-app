@@ -1,7 +1,8 @@
 .container {
   height: calc(100% - 110px);
+  overflow-y: auto;
 
-  div {
+  div > div {
     margin: 10px auto 10px auto;
     padding: 10px;
     border-radius: 10px;
@@ -11,8 +12,7 @@
     overflow: auto;
     width: fit-content;
 
-    span {
-      color: #008800;
+    span:first-child {
       font-style: italic;
     }
   }

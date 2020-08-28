@@ -1,4 +1,4 @@
-const users = []
+let users = []
 
 const addUser = ({id, name, room}) => {
     name = name.trim().toLocaleLowerCase()
@@ -13,12 +13,7 @@ const addUser = ({id, name, room}) => {
     return {user}
 }
 
-const removeUser = (id) => {
-    return users.filter(user => {
-        if (user.id === id) return undefined
-        else return user
-    })
-}
+const removeUser = (id) => users = users.filter(user => user.id !== id)
 
 const getUser = (id) => users.find(user => user.id === id)
 
