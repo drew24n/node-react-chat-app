@@ -27,6 +27,7 @@ export const Chat = ({location}) => {
         })
         return () => {
             socket.disconnect(true)
+            socket.off()
             dispatch(setNameAction(''))
             dispatch(setRoomAction(''))
         }
