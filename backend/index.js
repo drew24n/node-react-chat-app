@@ -19,7 +19,6 @@ app.use(router)
 io.on('connection', socket => {
     socket.on('join', ({name, room}, callback) => {
         const {error, user} = addUser({id: socket.id, name, room})
-
         if (error) return callback(error)
 
         socket.join(user.room)
@@ -32,6 +31,7 @@ io.on('connection', socket => {
 
         io.to(user.room).emit('roomInfo', {room: user.room, users: getUsersInRoom(user.room)})
 
+        console.log(`${user.name} has joined room ${user.room}`)
         callback()
     })
 
@@ -46,9 +46,10 @@ io.on('connection', socket => {
     socket.on('disconnect', () => {
         const user = removeUser(socket.id)
         if (user) {
-            io.to(user.room).emit('message', {user: 'system message', message: `user ${user.name} has left the room`})
+            io.to(user.room).emit('message', {user: 'system message', message: `${user.name} has left the room`})
             io.to(user.room).emit('roomInfo', {room: user.room, users: getUsersInRoom(user.room)})
         }
+        console.log(`${user.name} has left room ${user.room}`)
     })
 })
 

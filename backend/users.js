@@ -6,14 +6,19 @@ const addUser = ({id, name, room}) => {
 
     const existingUser = users.find(user => user.room === room && user.name === name)
     if (existingUser) return {error: 'username is already taken'}
-    if (name.length > 10 || room.length > 10) return {error: `user name or room name length shouldn't exceed 10 symbols`}
+    if (name.length > 10 || room.length > 10) return {error: 'user name or room length should be up to 10 symbols'}
+    if (!name || !room) return {error: 'user name or room can`t be empty'}
 
     const user = {id, name, room}
     users.push(user)
     return {user}
 }
 
-const removeUser = (id) => users = users.filter(user => user.id !== id)
+const removeUser = (id) => {
+    let removedUser = users.filter(user => user.id === id)
+    users = users.filter(user => user.id !== id)
+    return removedUser[0]
+}
 
 const getUser = (id) => users.find(user => user.id === id)
 

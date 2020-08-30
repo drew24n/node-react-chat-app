@@ -5,8 +5,7 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 export const Login = () => {
-    const name = useSelector(state => state.login.name)
-    const room = useSelector(state => state.login.room)
+    const loginState = useSelector(state => state.login)
     const dispatch = useDispatch()
 
     return (
@@ -17,8 +16,8 @@ export const Login = () => {
                        onChange={event => dispatch(setNameAction(event.target.value))}/>
                 <input placeholder="room name" type="text" maxLength={10}
                        onChange={event => dispatch(setRoomAction(event.target.value))}/>
-                <Link onClick={e => (!name || !room || name.length > 10 || room.length > 10) && e.preventDefault()}
-                      to={`/chat?name=${name}&room=${room}`}>
+                <Link onClick={e => (!loginState.name || !loginState.room) && e.preventDefault()}
+                      to={`/chat?name=${loginState.name}&room=${loginState.room}`}>
                     <button>Enter</button>
                 </Link>
             </form>
