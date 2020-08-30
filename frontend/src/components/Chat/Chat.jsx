@@ -11,9 +11,10 @@ import {setNameAction, setRoomAction} from "../../redux/loginReducer";
 
 export const socket = io('localhost:5000')
 
-export const Chat = ({location}) => {
+export const Chat = ({location, history}) => {
     const dispatch = useDispatch()
     const chatState = useSelector(state => state.chat)
+    const loginState = useSelector(state => state.login)
 
     useEffect(() => {
         const {name, room} = queryString.parse(location.search)
@@ -23,7 +24,10 @@ export const Chat = ({location}) => {
             socket.connect()
         }
         socket.emit('join', {name, room}, error => {
-            if (error) alert(error)
+            if (error) {
+                history.push('/')
+                alert(error)
+            }
         })
         return () => {
             socket.disconnect(true)
@@ -40,7 +44,7 @@ export const Chat = ({location}) => {
     return (
         <div className={style.container}>
             <Header/>
-            <Messages messages={chatState.messages} name={useSelector(state => state.login.name)}/>
+            <Messages messages={chatState.messages} name={loginState.name}/>
             <Input message={chatState.message} socket={socket} setMessage={setMessageAction} dispatch={dispatch}/>
         </div>
     )

@@ -38,7 +38,7 @@ io.on('connection', socket => {
     socket.on('sendMessage', (message, callback) => {
         const user = getUser(socket.id)
 
-        io.to(user.room).emit('message', {user: user.name, message: message})
+        if (user) io.to(user.room).emit('message', {user: user.name, message: message})
 
         callback()
     })
@@ -48,8 +48,8 @@ io.on('connection', socket => {
         if (user) {
             io.to(user.room).emit('message', {user: 'system message', message: `${user.name} has left the room`})
             io.to(user.room).emit('roomInfo', {room: user.room, users: getUsersInRoom(user.room)})
+            console.log(`${user.name} has left room ${user.room}`)
         }
-        console.log(`${user.name} has left room ${user.room}`)
     })
 })
 
