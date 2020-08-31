@@ -7,7 +7,7 @@ export const Messages = ({messages, name}) => {
     const myName = name.trim().toLowerCase()
 
     return (
-        <ScrollToBottom className={style.container}>
+        <ScrollToBottom className={style.container} behavior={'smooth'}>
             {messages.map((m, index) => {
                 return (
                     <div style={myName !== m.user ? {margin: '20px 10px 20px auto'} : {margin: '20px auto 20px 10px'}}

@@ -29,14 +29,12 @@
         cursor: pointer;
         height: 30px;
         width: 80px;
-        background-color: #e6e6fa;
+        background-color: #0b98ef;
         outline: none;
         border: none;
         font-size: 16px;
-
-        &:hover {
-          border: 2px solid #0b98ef;
-        }
+        color: #fff;
+        border-radius: 10px;
       }
     }
 

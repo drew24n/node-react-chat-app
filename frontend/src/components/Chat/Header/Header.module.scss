@@ -1,20 +1,28 @@
 .container {
-  display: flex;
+  height: 84px;
 
-  h2 {
+  div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  div:first-child {
+    height: 42px;
+    box-sizing: border-box;
+  }
+
+  div > h2 {
     display: flex;
     align-items: center;
     width: 75%;
-    height: 60px;
     box-sizing: border-box;
     font-size: 20px;
     color: #e6e6fa;
     padding: 10px;
-    cursor: default;
     background-color: #6495ed;
   }
 
-  a {
+  div > a {
     display: block;
     width: 25%;
 
@@ -29,4 +37,34 @@
     }
   }
 
+  .online {
+    display: inline-flex;
+    align-items: center;
+    overflow: auto;
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    background-color: rgba(230, 230, 250, 0.75);
+    padding: 5px;
+    cursor: default;
+
+    p {
+      display: inline;
+      width: fit-content;
+      margin-left: 5px;
+    }
+  }
+
+  .userItem {
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: #11ff00;
+      margin-right: 3px;
+      margin-bottom: 1px;
+    }
+  }
 }

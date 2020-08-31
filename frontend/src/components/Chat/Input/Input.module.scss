@@ -1,8 +1,9 @@
 .container {
   display: flex;
+  height: 42px;
 
   textarea {
-    height: 50px;
+    height: 100%;
     width: 75%;
     box-sizing: border-box;
     outline: none;
@@ -14,7 +15,7 @@
 
   button {
     background-color: #6495ed;
-    height: 50px;
+    height: 100%;
     width: 25%;
     box-sizing: border-box;
     cursor: pointer;
