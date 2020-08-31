@@ -10,7 +10,8 @@ import {Header} from "./Header/Header";
 import {setNameAction, setRoomAction} from "../../redux/loginReducer";
 import messageSound from "../../assets/sounds/sound.mp3";
 
-export const socket = io('localhost:5000')
+// export const socket = io('localhost:5000')
+export const socket = io('https://reactsocketio.herokuapp.com/')
 
 export const Chat = ({location, history}) => {
     const dispatch = useDispatch()
