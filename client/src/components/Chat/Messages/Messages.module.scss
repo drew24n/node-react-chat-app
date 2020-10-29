@@ -1,0 +1,26 @@
+.container {
+  overflow: auto;
+
+  button {
+    background-color: #6495ed;
+
+    &:hover {
+      background-color: #6495ed;
+    }
+  }
+
+  .dialogItem {
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #e6e6fa;
+    font-size: 14px;
+    max-width: 67%;
+    overflow: auto;
+    width: fit-content;
+
+    .userName {
+      font-style: italic;
+    }
+  }
+}

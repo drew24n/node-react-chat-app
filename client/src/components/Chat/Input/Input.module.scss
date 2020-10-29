@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+
+  textarea {
+    height: 100%;
+    width: 75%;
+    outline: none;
+    resize: none;
+    border: none;
+    font-size: 16px;
+    background-color: #e6e6fa;
+  }
+
+  button {
+    background-color: #6495ed;
+    height: 100%;
+    width: 25%;
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+    color: #e6e6fa;
+    transition: all 0.3s ease;
+    outline: none;
+
+    &:active {
+      background-color: #2a70f1;
+    }
+  }
+}
