@@ -1,7 +1,7 @@
-import React, {memo} from "react";
-import style from "./Header.module.scss";
+import React from "react";
+import style from "../styles/ChatTopSection.module.scss";
 
-function Header({users, history, room}) {
+function ChatTopSection({users, history, room}) {
     return (
         <div className={style.container}>
             <div className={style.firstSection}>
@@ -16,4 +16,4 @@ function Header({users, history, room}) {
     )
 }
 
-export default memo(Header)
+export default ChatTopSection

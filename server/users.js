@@ -5,8 +5,8 @@ const addUser = ({id, name, room}) => {
     room = room.trim().toLocaleLowerCase()
 
     const existingUser = users.find(user => user.room === room && user.name === name)
-    if (existingUser) return {error: 'username is already taken'}
-    if (name.length > 20 || room.length > 20) return {error: 'user name or room length should be up to 10 symbols'}
+    if (existingUser) return {error: `username ${name} is already taken`}
+    if (name.length > 20 || room.length > 20) return {error: 'user name or room length should be up to 20 symbols'}
     if (!name || !room) return {error: 'user name or room can`t be empty'}
 
     const user = {id, name, room}

@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
-import style from "./App.module.scss";
-import Chat from "./components/Chat/Chat";
-import Login from "./components/Login/Login";
+import style from "./styles/App.module.scss";
+import Chat from "./pages/Chat";
+import Login from "./pages/Login";
 import {Switch, Route, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 

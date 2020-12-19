@@ -1,9 +1,9 @@
-import React, {memo} from "react";
-import style from "./Messages.module.scss";
+import React from "react";
+import style from "../styles/ChatMessages.module.scss";
 import ScrollToBottom from 'react-scroll-to-bottom';
 import ReactEmoji from 'react-emoji';
 
-function Messages({messages, name}) {
+function ChatMessages({messages, name}) {
     const myName = name.trim().toLowerCase()
 
     return (
@@ -18,7 +18,7 @@ function Messages({messages, name}) {
                         <span className={style.userName}
                             style={myName !== m.user
                             ? {color: 'red'}
-                            : {color: '#008800'}}
+                            : {color: 'green'}}
                         >{m.user}: </span>
                         <span>{ReactEmoji.emojify(m.message)}</span>
                         <br/>
@@ -29,4 +29,4 @@ function Messages({messages, name}) {
     )
 }
 
-export default memo(Messages)
+export default ChatMessages

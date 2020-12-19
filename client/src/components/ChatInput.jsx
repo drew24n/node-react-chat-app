@@ -1,7 +1,7 @@
-import React, {memo} from "react";
-import style from "./Input.module.scss";
+import React from "react";
+import style from "../styles/ChatInput.module.scss";
 
-function Input({message, setMessage, dispatch, socket}) {
+function ChatInput({message, setMessage, dispatch, socket}) {
     const sendMessage = (e) => {
         e.preventDefault()
         if (message) {
@@ -19,4 +19,4 @@ function Input({message, setMessage, dispatch, socket}) {
     )
 }
 
-export default memo(Input)
+export default ChatInput

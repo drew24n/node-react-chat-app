@@ -1,18 +1,21 @@
-import React, {memo, useEffect} from "react";
+import React, {useEffect, useMemo} from "react";
 import * as queryString from "query-string";
 import io from "socket.io-client";
-import {setMessageAction, setMessagesAction, setOnlineUsers} from "../../redux/chatReducer";
-import style from "./Chat.module.scss";
-import Input from "./Input/Input";
-import Messages from "./Messages/Messages";
-import Header from "./Header/Header";
-import {setNameAction, setRoomAction} from "../../redux/loginReducer";
-import messageSound from "../../assets/sounds/sound.mp3";
-
-// const socket = io('localhost:5000')
-const socket = io('https://node-socket-react-chat-app.herokuapp.com')
+import {setMessageAction, setMessagesAction, setOnlineUsers} from "../redux/chatReducer";
+import style from "../styles/Chat.module.scss";
+import Input from "../components/ChatInput";
+import Messages from "../components/ChatMessages";
+import Header from "../components/ChatTopSection";
+import {setNameAction, setRoomAction} from "../redux/loginReducer";
+import messageSound from "../assets/sounds/alert.mp3";
 
 function Chat({state, dispatch, history}) {
+    const socket = useMemo(() => {
+        return process.env.NODE_ENV === 'development'
+            ? io(process.env.REACT_APP_DEV)
+            : io(process.env.REACT_APP_PROD)
+    }, [])
+
     useEffect(() => {
         const {name, room} = queryString.parse(history.location.search)
         dispatch(setNameAction(name))
@@ -32,7 +35,7 @@ function Chat({state, dispatch, history}) {
             dispatch(setNameAction(''))
             dispatch(setRoomAction(''))
         }
-    }, [history.location.search, history, dispatch])
+    }, [history.location.search, history, dispatch, socket])
 
     useEffect(() => {
         socket.on('message', async message => {
@@ -44,7 +47,7 @@ function Chat({state, dispatch, history}) {
             }
         })
         socket.on('roomInfo', ({users}) => dispatch(setOnlineUsers(users)))
-    }, [dispatch, history.location.search])
+    }, [dispatch, history.location.search, socket])
 
     return (
         <div className={style.container}>
@@ -55,4 +58,4 @@ function Chat({state, dispatch, history}) {
     )
 }
 
-export default memo(Chat)
+export default Chat

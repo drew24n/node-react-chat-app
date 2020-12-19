@@ -1,12 +1,14 @@
-import React, {memo} from "react";
-import style from "./Login.module.scss";
-import {setNameAction, setRoomAction} from "../../redux/loginReducer";
+import React from "react";
+import style from "../styles/Login.module.scss";
+import {setNameAction, setRoomAction} from "../redux/loginReducer";
 
 function Login({history, loginState, dispatch}) {
     const loginHandler = (e) => {
         e.preventDefault()
-        if (loginState.name && loginState.room) {
+        if (loginState.name.trim() && loginState.room.trim()) {
             history.push(`/chat?name=${loginState.name}&room=${loginState.room}`)
+        } else {
+            alert('username or password cannot be empty')
         }
     }
 
@@ -32,4 +34,4 @@ function Login({history, loginState, dispatch}) {
     )
 }
 
-export default memo(Login)
+export default Login
